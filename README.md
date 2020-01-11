@@ -1,5 +1,5 @@
 # simon-dice-1
 
-(./images/simondice.jpg)
+[1](./images/simondice.jpg)
 
 https://gabrieljgb.github.io/simon-dice-1/
