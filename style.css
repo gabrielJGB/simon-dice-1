@@ -4,22 +4,42 @@
 }
 body {
     font-family: 'Libre Franklin', sans-serif;
-    background: rgb(47,97,138);
-    background: linear-gradient(90deg, rgba(47,97,138,1) 0%, rgba(52,105,177,1) 35%, rgba(32,126,190,1) 69%, rgba(70,175,247,1) 100%);
+    background: rgb(79,153,179);
+background: linear-gradient(90deg, rgba(79,153,179,0.944397742006959) 0%, rgba(68,124,162,0.9528011033514968) 35%, rgba(43,117,151,0.9528011033514968) 50%, rgba(37,107,152,0.9471988624551383) 75%, rgba(22,113,172,0.9499999829033176) 100%);
 }
 
 .options {
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 1fr 1fr;
-    width: 400px;
-    height:400px;
-    margin: 30px auto;
+    width: 420px;
+    height:420px;
+    margin: 50px auto 20px auto;
     gap: 2px;
 }
-.options div {
+.red,.green,.blue,.yellow{
     border: solid black 5px;
     cursor: pointer;
+}
+
+.cont{
+    position: absolute;
+    margin:165px 191px;
+    width:auto;
+    font-size: 72px;
+    color:rgb(248, 245, 245);
+    font-weight: 700;
+    z-index:5;
+}
+.circle{
+    position: absolute;
+    z-index:1;
+    background-color: rgb(22, 22, 22);
+    border:solid 5px black;
+    width: 160px;
+    height: 160px;
+    border-radius: 100px;
+    margin: 128px;
 }
 /*---------------------------------------------------------*/
 .red {
@@ -46,7 +66,7 @@ body {
 .state {
     display: flex;
     flex-direction: row;
-    width: 30%;
+    width: 35%;
     margin: 20px auto;
     height: 80px;
     border-radius: 10px;
@@ -61,9 +81,12 @@ body {
 }
 .score{
     align-self: center;
-    margin:10px 15px;
-    padding:0 15px;
+    margin:10px 10px;
+    padding:0 5px;
     border-radius: 5px;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
 }
 .turn{
     align-self: center;
@@ -74,12 +97,12 @@ body {
 }
 .buttons{
     width: 50%;
-    margin: 20px auto;
+    margin: 10px auto;
     display: flex;
     justify-content: center;
 }
 .buttons button{
-    padding:10px 20px;
+    padding:10px 30px;
     margin:5px 20px;
     background-color: rgb(47, 39, 158);
     border:0;
@@ -94,14 +117,18 @@ body {
     -moz-box-shadow: -3px 9px 14px -4px rgba(0, 0, 0, 0.4);
     box-shadow: -3px 9px 14px -4px rgba(0, 0, 0, 0.4);
 }
+
 .buttons button:active{
     background-color: rgb(19, 14, 90);
     border:0;
 }
 @media all and (max-width: 800px){
 .options{
-        width: 280px;
-        height:280px;
+        width: 310px;
+        height:310px;
+}
+.options div{
+    cursor: default;
 }
 .state {
         width: 90%;
@@ -110,8 +137,15 @@ body {
     margin:10px 0px;
     text-align: center;
 }
-.score{
-    margin:10px 0px;
+.cont{
+    margin:124px 142px;
+    font-size: 50px;
+}
+.circle{
+    margin: 100px;
+    width: 100px;
+    height: 100px;
+    border-radius: 63px;
 }
 
 }

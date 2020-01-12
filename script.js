@@ -9,12 +9,14 @@ const $resetb = document.querySelector('.resetb');
 const $turn = document.querySelector('.turn');
 const $state = document.querySelector('.state');
 const $score = document.querySelector('.score');
+const $cont = document.querySelector('.cont');
 const juegoMaquina = [];
 const juegoUsuario = [];
 let puntaje=0;
 let perderVar = false;
 let k = -1;
 
+$cont.textContent='';
 $turn.textContent = 'Pulsa JUGAR';
 $resetb.style.display='none';
 $red.addEventListener('click', redPressed);
@@ -24,9 +26,15 @@ $blue.addEventListener('click', bluePressed);
 
 
 function empezarJuego() {
-    k=-1;
+    let delay = 0;
+
+    if(juegoMaquina.length == 0){
+        conteo();
+        delay = 1000;
+    }
     $playb.style.display ='none';
-    $resetb.style.display='block';
+    setTimeout(function(){
+    k=-1;
     juegoUsuario.length = 0;
     bloquearInputUsuario();
     agregarCuadroMaquina();
@@ -34,7 +42,24 @@ function empezarJuego() {
     setTimeout(function () {
         agregarEventListeners();
     }, (juegoMaquina.length * 1000) + 500);
+   },delay);
     
+}
+function conteo(){
+    let i=0;
+    
+    setTimeout(function(){
+        $cont.textContent = '3';
+            setTimeout(function(){
+                $cont.textContent = '2';
+                setTimeout(function(){
+                    $cont.textContent = '1';
+                        setTimeout(function(){
+                            $cont.textContent='';
+                        },500);
+                },500);
+            },500);
+    },0);
 }
 
 function resetear(){
@@ -54,13 +79,12 @@ function compararJuegos() {
     k++;
 
     if (juegoMaquina[k].className == juegoUsuario[k]) {
-        console.log('va bien');
-        
         if(juegoMaquina.length == juegoUsuario.length){
             puntaje++;
+
             setTimeout(function () {
                 $scorenum.textContent = puntaje;
-                $score.style['background-color'] = 'rgb(179, 232, 154)';
+                $score.style['background-color'] = 'rgb(122, 216, 79)';
                 setTimeout(function () {
                 $score.style['background-color'] = 'rgb(243, 226, 196)';                
                 }, 500);
@@ -69,6 +93,7 @@ function compararJuegos() {
         }
     }
     else {  
+        $resetb.style.display='block';
         perder();
     }
 }
@@ -115,7 +140,7 @@ function redPressed() {
         $red.style.filter = 'brightness(100%)';
         setTimeout(function () {
             $red.style.filter = 'brightness(60%)';
-        }, 500);
+        }, 300);
     }, 0);
     compararJuegos();
 }
@@ -126,7 +151,7 @@ function greenPressed() {
         $green.style.filter = 'brightness(100%)';
         setTimeout(function () {
             $green.style.filter = 'brightness(60%)';
-        }, 500);
+        }, 300);
     }, 0);
     compararJuegos();
 }
@@ -136,7 +161,7 @@ function yellowPressed() {
         $yellow.style.filter = 'brightness(100%)';
         setTimeout(function () {
             $yellow.style.filter = 'brightness(60%)';
-        }, 500);
+        }, 300);
     }, 0);
     compararJuegos();
 }
@@ -146,7 +171,7 @@ function bluePressed() {
         $blue.style.filter = 'brightness(100%)';
         setTimeout(function () {
             $blue.style.filter = 'brightness(60%)';
-        }, 500);
+        }, 300);
     }, 0);
     compararJuegos();
 }
@@ -154,7 +179,7 @@ function bluePressed() {
 function bloquearInputUsuario() {
     if(!perderVar){
         setTimeout(function(){
-            $turn.textContent = 'Turno maquina';
+            $turn.textContent = 'Turno de la maquina';
         },500);
     }else{
         $turn.textContent = 'Perdiste';
