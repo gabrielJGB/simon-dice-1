@@ -2,5 +2,5 @@
 
 https://gabrieljgb.github.io/simon-dice-1/
 
-![image](./images/simondice.jpg)
+![image](./images/simonmdice.jpg)
 
